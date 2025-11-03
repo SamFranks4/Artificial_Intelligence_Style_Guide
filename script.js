@@ -1,11 +1,11 @@
-// Smooth scroll for sidebar links
-document.querySelectorAll('.sidebar-links a').forEach(link => {
-    link.addEventListener('click', e => {
+// Highlight active sidebar link and smooth scroll
+const sidebarLinks = document.querySelectorAll('.sidebar-links a');
+
+sidebarLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
         e.preventDefault();
-        document.querySelector('.content').scrollIntoView({ behavior: 'smooth' });
-        // Set active class
-        document.querySelectorAll('.sidebar-links a').forEach(l => l.classList.remove('active'));
+        sidebarLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
+        document.querySelector('.content').scrollIntoView({behavior: 'smooth'});
     });
-});
 });
