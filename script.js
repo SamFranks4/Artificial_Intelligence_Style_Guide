@@ -1,14 +1,14 @@
-// Highlight active sidebar link and smooth scroll
+// Only highlight the current page link
 const sidebarLinks = document.querySelectorAll('.sidebar-links a');
 
+// Highlight based on current page URL
+const currentPage = window.location.pathname.split("/").pop();
+
 sidebarLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        // Remove active from all
-        sidebarLinks.forEach(l => l.classList.remove('active'));
-        // Add active to clicked
+    const linkPage = link.getAttribute('href');
+    if (linkPage === currentPage) {
         link.classList.add('active');
-        // Scroll main content into view smoothly
-        document.querySelector('.content').scrollIntoView({behavior: 'smooth'});
-    });
+    } else {
+        link.classList.remove('active');
+    }
 });
